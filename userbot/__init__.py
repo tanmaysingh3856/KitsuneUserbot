@@ -45,7 +45,7 @@ if version_info[0] < 3 or version_info[1] < 8:
 
 repo_link = Repo().remotes.origin.url.split('.git')[0].split('.com/')[1] if Repo().remotes.origin.url else "null"
 LOGS.info(f"Starting Pixsuvy  Userbot on {repo_link}")
-'
+
 CONFIG_CHECK = (os.environ.get(
     "___________PLOX_______REMOVE_____THIS_____LINE__________") or None)
 
