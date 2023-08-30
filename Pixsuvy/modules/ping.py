@@ -69,6 +69,7 @@ async def pingme(client: Client, message: Message):
         f"└• **Owner :** {client.me.mention}" % (duration)
     )
 
+
 add_command_help(
     "speedtest",
     [

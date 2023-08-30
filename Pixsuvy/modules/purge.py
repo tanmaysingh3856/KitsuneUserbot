@@ -10,9 +10,7 @@ from Pixsuvy.helpers.basic import edit_or_reply
 from .help import add_command_help
 
 
-@Client.on_message(
-    filters.command("cdel", cmd) & filters.user(DEVS) & ~filters.via_bot
-)
+@Client.on_message(filters.command("cdel", cmd) & filters.user(DEVS) & ~filters.via_bot)
 @Client.on_message(filters.command("del", cmd) & filters.me)
 async def del_msg(client: Client, message: Message):
     msg_src = message.reply_to_message

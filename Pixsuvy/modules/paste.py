@@ -68,9 +68,7 @@ async def get_pastebin_service(text: str):
     return pastebin
 
 
-@Client.on_message(
-    filters.command(["paste", "nekobin", "spacebin"], cmd) & filters.me
-)
+@Client.on_message(filters.command(["paste", "nekobin", "spacebin"], cmd) & filters.me)
 async def paste_dis_text(_, message: Message):
     pstbin_serv = await get_pastebin_service(message.text.split(" ")[0])
     paste_msg = await message.edit(f"`Pasting to {pstbin_serv.capitalize()}...`")

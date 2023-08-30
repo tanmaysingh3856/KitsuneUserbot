@@ -153,9 +153,7 @@ async def mute(client: Client, message: Message):
     await Pix.edit(msg)
 
 
-@Client.on_message(
-    filters.command(["cunmute"], cmd) & filters.user(DEVS) & ~filters.me
-)
+@Client.on_message(filters.command(["cunmute"], cmd) & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.group & filters.command("unmute", cmd) & filters.me)
 async def unmute(client: Client, message: Message):
     user_id = await extract_user(message)

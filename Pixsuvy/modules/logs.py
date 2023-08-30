@@ -1,4 +1,4 @@
-#by @who907
+# by @who907
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
