@@ -15,9 +15,9 @@ auth_url = r["auth_url"]
 
 @Client.on_message(filters.command(["tgm"], cmd) & filters.me)
 async def uptotelegraph(client: Client, message: Message):
-    Man = await edit_or_reply(message, "`Processing . . .`")
+    pix = await edit_or_reply(message, "`Processing . . .`")
     if not message.reply_to_message:
-        await Man.edit(
+        await pix.edit(
             "**Please reply to the message, to get the link from the Telegraph.**"
         )
         return
@@ -29,11 +29,11 @@ async def uptotelegraph(client: Client, message: Message):
         try:
             media_url = upload_file(m_d)
         except exceptions.TelegraphException as exc:
-            await Man.edit(f"**ERROR:** `{exc}`")
+            await pix.edit(f"**ERROR:** `{exc}`")
             os.remove(m_d)
             return
         U_done = f"**Successfully uploaded to** [Telegraph](https://graph.org/{media_url[0]})"
-        await Man.edit(U_done)
+        await pix.edit(U_done)
         os.remove(m_d)
     elif message.reply_to_message.text:
         page_title = get_text(message) if get_text(message) else client.me.first_name
@@ -42,17 +42,17 @@ async def uptotelegraph(client: Client, message: Message):
         try:
             response = telegraph.create_page(page_title, html_content=page_text)
         except exceptions.TelegraphException as exc:
-            await Man.edit(f"**ERROR:** `{exc}`")
+            await pix.edit(f"**ERROR:** `{exc}`")
             return
         wow_graph = f"**Successfully uploaded to ** [Telegraph](https://graph.org/{response['path']})"
-        await Man.edit(wow_graph)
+        await pix.edit(wow_graph)
 
 
 add_command_help(
     "tgm",
     [
         [
-            f" {cmd}tg",
+            f" {cmd}tgm",
             "Reply to Text Message or Media to upload it to the telegraph.",
         ],
     ],

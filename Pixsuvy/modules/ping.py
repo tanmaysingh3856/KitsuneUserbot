@@ -16,7 +16,7 @@ from Pixsuvy.utils.tools import get_readable_time
 from .help import add_command_help
 
 
-@Client.on_message(filters.command("speed", cmd) & filters.me)
+@Client.on_message(filters.command("speedtest", cmd) & filters.me)
 async def speed_test(client: Client, message: Message):
     new_msg = await edit_or_reply(message, "`Running speed test . . .`")
     spd = speedtest.Speedtest()
@@ -69,30 +69,12 @@ async def pingme(client: Client, message: Message):
         f"└• **Owner :** {client.me.mention}" % (duration)
     )
 
-
-@Client.on_message(filters.command("kping", cmd) & filters.me)
-async def kping(client: Client, message: Message):
-    uptime = await get_readable_time((time.time() - StartTime))
-    start = datetime.now()
-    xx = await edit_or_reply(message, "8✊===D")
-    await xx.edit("8=✊==D")
-    await xx.edit("8==✊=D")
-    await xx.edit("8===✊D")
-    end = datetime.now()
-    duration = (end - start).microseconds / 1000
-    await xx.edit(
-        f"❏ **PONG!!🏓**- `%sms`\n"
-        f"├• **Uptime -** `{uptime}` \n"
-        f"└• **Owner :** {client.me.mention}" % (duration)
-    )
-
-
 add_command_help(
     "speedtest",
     [
         ["dc", "To see your DC Telegram."],
         [
-            f"speedtest `or` {cmd}speed",
+            f"speedtest",
             "To measure your Server Speed.",
         ],
     ],
@@ -103,6 +85,5 @@ add_command_help(
     "ping",
     [
         ["ping", "To Show Your Bot Ping."],
-        ["kping", "To Show Your Bot Ping (Different animation only)."],
     ],
 )

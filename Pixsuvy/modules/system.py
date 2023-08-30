@@ -20,7 +20,7 @@ async def restart_bot(_, message: Message):
     except BaseException as err:
         LOGGER(__name__).info(f"{err}")
         return
-    await msg.edit_text("#Pixsuvy has restarted!\n\n")
+    await msg.edit_text("✅ Bot has restarted !\n\n")
     if HAPP is not None:
         HAPP.restart()
     else:
@@ -34,7 +34,7 @@ async def shutdown_bot(client: Client, message: Message):
         await client.send_message(
             BOTLOG_CHATID,
             "**#SHUTDOWN** \n"
-            "**Pixsuvy** has been turned off",
+            "**Pixsuvy** has been turned off!\If you want to revive it please open heroku",
         )
     await edit_or_reply(message, "**Pixsuvy Successfully shut down!**")
     if HAPP is not None:

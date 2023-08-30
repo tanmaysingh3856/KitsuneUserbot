@@ -1,3 +1,4 @@
+#by @who907
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -10,7 +11,7 @@ from .help import add_command_help
 
 @Client.on_message(filters.command("logs", cmd) & filters.me)
 async def splogs(client: Client, message: Message):
-    whew = await edit_or_reply(message, "`Getting logs`")
+    whew = await edit_or_reply(message, "`Getting logs . . .`")
     with open("logs.txt", "r") as f:
         lines = f.readlines()
     content = "".join(lines)

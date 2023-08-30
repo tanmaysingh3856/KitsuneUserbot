@@ -16,9 +16,9 @@ from .help import add_command_help
 @Client.on_message(filters.command(["whois", "info"], cmd) & filters.me)
 async def who_is(client: Client, message: Message):
     user_id = await extract_user(message)
-    Man = await edit_or_reply(message, "`Processing . . .`")
+    pix = await edit_or_reply(message, "`Processing . . .`")
     if not user_id:
-        return await Man.edit(
+        return await pix.edit(
             "**Provide userid/username/reply to get that user's info.**"
         )
     try:
@@ -61,7 +61,7 @@ async def who_is(client: Client, message: Message):
         if photo_id:
             photo = await client.download_media(photo_id)
             await gather(
-                Man.delete(),
+                pix.delete(),
                 client.send_photo(
                     message.chat.id,
                     photo,
@@ -71,14 +71,14 @@ async def who_is(client: Client, message: Message):
             )
             remove(photo)
         else:
-            await Man.edit(out_str, disable_web_page_preview=True)
+            await pix.edit(out_str, disable_web_page_preview=True)
     except Exception as e:
-        return await Man.edit(f"**INFO:** `{e}`")
+        return await pix.edit(f"**INFO:** `{e}`")
 
 
 @Client.on_message(filters.command(["chatinfo", "cinfo", "ginfo"], cmd) & filters.me)
 async def chatinfo_handler(client: Client, message: Message):
-    Man = await edit_or_reply(message, "`Processing...`")
+    pix = await edit_or_reply(message, "`Processing...`")
     try:
         if len(message.command) > 1:
             chat_u = message.command[1]
@@ -121,7 +121,7 @@ async def chatinfo_handler(client: Client, message: Message):
         if photo_id:
             photo = await client.download_media(photo_id)
             await gather(
-                Man.delete(),
+                pix.delete(),
                 client.send_photo(
                     message.chat.id,
                     photo,
@@ -131,9 +131,9 @@ async def chatinfo_handler(client: Client, message: Message):
             )
             remove(photo)
         else:
-            await Man.edit(out_str, disable_web_page_preview=True)
+            await pix.edit(out_str, disable_web_page_preview=True)
     except Exception as e:
-        return await Man.edit(f"**INFO:** `{e}`")
+        return await pix.edit(f"**INFO:** `{e}`")
 
 
 add_command_help(

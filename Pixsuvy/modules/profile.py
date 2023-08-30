@@ -58,7 +58,7 @@ async def setname(client: Client, message: Message):
         except Exception as e:
             await pix.edit(f"**ERROR:** `{e}`")
     else:
-        return await pix.edit("provid3e name ")
+        return await pix.edit("Provide a text to set as your telegram name.")
 
 
 @Client.on_message(filters.command(["setbio"], cmd) & filters.me)

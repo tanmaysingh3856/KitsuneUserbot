@@ -25,10 +25,10 @@ async def song(client, message: Message):
     if not urlissed:
         await client.send_message(
             message.chat.id,
-            "⚠️Check spelling!",
+            "Check spelling!",
         )
         return
-    pablo = await client.send_message(message.chat.id, f"**Searching ** `{urlissed}`")
+    pix = await client.send_message(message.chat.id, f"**Searching ** `{urlissed}`")
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
@@ -63,7 +63,7 @@ async def song(client, message: Message):
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(mo, download=True)
     except Exception as e:
-        await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
+        await pix.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
         return
     c_time = time.time()
     capy = f"""
@@ -81,13 +81,13 @@ async def song(client, message: Message):
         caption=capy,
         progress=progress,
         progress_args=(
-            pablo,
+            pix,
             c_time,
             f"** Download** `{urlissed}`",
             file_stark,
         ),
     )
-    await pablo.delete()
+    await pix.delete()
     for files in (sedlyf, file_stark):
         if files and os.path.exists(files):
             os.remove(files)
@@ -237,11 +237,11 @@ def time_to_seconds(time):
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
-    pablo = await client.send_message(
+    pix = await client.send_message(
         message.chat.id, f"** Searching video ..** `{urlissed}`"
     )
     if not urlissed:
-        await pablo.edit("Invalid Command Syntax Please Check help Menu To Know More!")
+        await pix.edit("Invalid Command Syntax Please Check help Menu To Know More!")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -289,13 +289,13 @@ async def vsong(client, message: Message):
         supports_streaming=True,
         progress=progress,
         progress_args=(
-            pablo,
+            pix,
             c_time,
             f"** Download** `{urlissed}`",
             file_stark,
         ),
     )
-    await pablo.delete()
+    await pix.delete()
     for files in (sedlyf, file_stark):
         if files and os.path.exists(files):
             os.remove(files)
@@ -307,6 +307,8 @@ add_command_help(
         [
             f"song",
             "To download song from yt.",
+            f"vsong",
+            "To download song video from yt.",
         ],
     ],
 )

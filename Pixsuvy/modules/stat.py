@@ -11,7 +11,7 @@ from .help import *
 
 @Client.on_message(filters.command(["stats", "status"], cmd) & filters.me)
 async def stats(client: Client, message: Message):
-    Man = await edit_or_reply(message, "`Collecting stats...`")
+    pix = await edit_or_reply(message, "`Collecting stats...`")
     start = datetime.now()
     u = 0
     g = 0
@@ -40,7 +40,7 @@ async def stats(client: Client, message: Message):
 
     end = datetime.now()
     ms = (end - start).seconds
-    await Man.edit_text(
+    await pix.edit_text(
         """`Your Stats Obtained in {} seconds`
 `You have {} Private Messages.`
 `You are in {} Groups.`
