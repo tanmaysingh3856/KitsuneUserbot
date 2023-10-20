@@ -1,7 +1,7 @@
 To use this userbot, you will need to have Python 3.7 or higher installed on your machine.
 
 Installation:
-1. Clone the repository: `git clone https://github.com/pixsuvy/pixsuvy-userbot.git`
+1. Clone the repository: `git clone https://github.com/tanmaysingh3856/pixsuvy-userbot.git`
 2. Navigate to the cloned directory: `cd pixsuvy-userbot`
 3. Install the required dependencies: `pip install -r requirements.txt`
 4. edit `config.env` and fill in the required values.
