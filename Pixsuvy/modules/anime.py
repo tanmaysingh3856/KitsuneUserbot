@@ -1,10 +1,13 @@
 import requests
-from pyrogram import filters, Client
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from .help import add_command_help
+
 from config import CMD_HANDLER as cmd
 
+from .help import add_command_help
+
 API = "https://api.nekosapi.com/v2/images/random"
+
 
 @Client.on_message(filters.command("anime", cmd) & filters.me)
 async def anime(client: Client, message: Message):
@@ -18,14 +21,22 @@ async def anime(client: Client, message: Message):
         title = anime["title"]
         description = anime["description"]
         image = anime["image"]
-        await message.edit(f"**Title:** `{title}`\n\n**Description:** `{description}`", disable_web_page_preview=True)
-        await client.send_photo(message.chat.id, image, caption=f"**Title:** `{title}`\n\n**Description:** `{description}`")
+        await message.edit(
+            f"**Title:** `{title}`\n\n**Description:** `{description}`",
+            disable_web_page_preview=True,
+        )
+        await client.send_photo(
+            message.chat.id,
+            image,
+            caption=f"**Title:** `{title}`\n\n**Description:** `{description}`",
+        )
     except IndexError:
         await message.edit("`No anime found`")
         return
     except Exception as e:
         await message.edit(f"`{e}`")
         return
+
 
 add_command_help(
     "anime",
