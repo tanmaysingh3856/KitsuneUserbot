@@ -1,6 +1,3 @@
-"""
-This is a README file for the Pixsuvy userbot based on Pyrogram.
-
 To use this userbot, you will need to have Python 3.7 or higher installed on your machine.
 
 Installation:
@@ -17,4 +14,3 @@ Usage:
 Contributing:
 - Fork the repository and create a new branch.
 - Make your changes and submit a pull request.
-
