@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from .help import add_command_help
 from config import CMD_HANDLER as cmd
 
-API = "https://api.animecyberspace.com/v1/anime"
+API = "https://api.nekosapi.com/v2/images/random"
 
 @Client.on_message(filters.command("anime", cmd) & filters.me)
 async def anime(client: Client, message: Message):
