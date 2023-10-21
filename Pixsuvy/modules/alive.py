@@ -35,7 +35,7 @@ async def alive(client: Client, message: Message):
     await asyncio.sleep(2)
     send = client.send_video if alive_logo.endswith(".mp4") else client.send_photo
     uptime = await get_readable_time((time.time() - StartTime))
-    man = (
+    pix = (
         f"**Pixsuvy is Up and Running.**\n\n"
         f"<b>{alive_text}</b>\n\n"
         f"{emoji} <b>Master :</b> {client.me.mention} \n"
@@ -51,12 +51,12 @@ async def alive(client: Client, message: Message):
             send(
                 message.chat.id,
                 alive_logo,
-                caption=man,
+                caption=pix,
                 reply_to_message_id=ReplyCheck(message),
             ),
         )
     except BaseException:
-        await xx.edit(man, disable_web_page_preview=True)
+        await xx.edit(pix, disable_web_page_preview=True)
 
 
 @Client.on_message(filters.command("setalivelogo", cmd) & filters.me)
