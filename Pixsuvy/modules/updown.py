@@ -91,18 +91,18 @@ async def progress_callback(current, total, bot: Client, message: Message):
 
 @Client.on_message(filters.command(["download"], cmd) & filters.me)
 async def download(client, message):
-    pesan = await edit_or_reply(message, "`proccessing . . .`")
+    xyz = await edit_or_reply(message, "`proccessing . . .`")
     if message.reply_to_message is not None:
         start_t = datetime.now()
         c_time = time.time()
         the_real_download_location = await client.download_media(
             message=message.reply_to_message,
             progress=progress_for_pyrogram,
-            progress_args=("trying to download, please be patient..", pesan, c_time),
+            progress_args=("trying to download, please be patient..", xyz, c_time),
         )
         end_t = datetime.now()
         ms = (end_t - start_t).seconds
-        await pesan.edit(
+        await xyz.edit(
             f"Downloaded to <code>{the_real_download_location}</code> in <u>{ms}</u> seconds."
         )
     elif len(message.command) > 1:
@@ -145,7 +145,7 @@ async def download(client, message):
                 )
                 current_message += f"ETA: {estimated_total_time}"
                 if round(diff % 10.00) == 0 and current_message != display_message:
-                    await pesan.edit(
+                    await xyz.edit(
                         disable_web_page_preview=True, text=current_message
                     )
                     display_message = current_message
@@ -155,14 +155,13 @@ async def download(client, message):
         if os.path.exists(download_file_path):
             end_t = datetime.now()
             ms = (end_t - start_t).seconds
-            await pesan.edit(
+            await xyz.edit(
                 f"Downloaded to <code>{download_file_path}</code> in {ms} seconds"
             )
     else:
-        await pesan.edit(
+        await xyz.edit(
             "Reply to a Telegram Media, to download it to my local server."
         )
-
 
 @Client.on_message(filters.command("upload", cmd) & filters.me)
 async def upload_helper(bot: Client, message: Message):
