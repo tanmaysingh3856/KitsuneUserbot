@@ -145,9 +145,7 @@ async def download(client, message):
                 )
                 current_message += f"ETA: {estimated_total_time}"
                 if round(diff % 10.00) == 0 and current_message != display_message:
-                    await xyz.edit(
-                        disable_web_page_preview=True, text=current_message
-                    )
+                    await xyz.edit(disable_web_page_preview=True, text=current_message)
                     display_message = current_message
                     await asyncio.sleep(10)
             except Exception as e:
@@ -159,9 +157,8 @@ async def download(client, message):
                 f"Downloaded to <code>{download_file_path}</code> in {ms} seconds"
             )
     else:
-        await xyz.edit(
-            "Reply to a Telegram Media, to download it to my local server."
-        )
+        await xyz.edit("Reply to a Telegram Media, to download it to my local server.")
+
 
 @Client.on_message(filters.command("upload", cmd) & filters.me)
 async def upload_helper(bot: Client, message: Message):
