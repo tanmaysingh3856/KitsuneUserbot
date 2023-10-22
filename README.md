@@ -8,7 +8,7 @@ Installation:
 5. Run the userbot: `python -m pixsuvy`
 
 Usage:
-- To start the userbot, run `python -m Pixsuvy`.
+- To start the userbot, run `python3 -m Pixsuvy`.
 - To stop the userbot, press `CTRL + C`.
 
 Contributing:
