@@ -4,7 +4,7 @@ from pyrogram import filters, Client
 from pyrogram.types import Message
 
 from config import CMD_HANDLER as cmd
-from Pixsuvy.helpers import AioHttp
+from Pixsuvy.helpers.aiohttp_helper import AioHttp
 from .help import add_command_help
 
 
