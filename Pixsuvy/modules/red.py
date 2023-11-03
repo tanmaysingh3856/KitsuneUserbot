@@ -1,7 +1,6 @@
 import pyrogram.enums
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from pyrogram import Client
 
 from .help import add_command_help
 
