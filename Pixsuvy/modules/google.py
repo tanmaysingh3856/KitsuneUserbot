@@ -55,7 +55,7 @@ add_command_help(
     [
         [
             "google",
-            "Featch Details on Google.",
+            "Fetch Details on Google.",
         ],
     ],
 )
