@@ -24,8 +24,8 @@ unmute_permissions = ChatPermissions(
     filters.group & filters.command(["setchatphoto", "setgpic"], cmd) & filters.me
 )
 async def set_chat_photo(client: Client, message: Message):
-    zuzu = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
-    can_change_admin = zuzu.can_change_info
+    xyz = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
+    can_change_admin = xyz.can_change_info
     can_change_member = message.chat.permissions.can_change_info
     if not (can_change_admin or can_change_member):
         await message.edit_text("You don't have enough permission")
@@ -289,12 +289,12 @@ add_command_help(
     [
         [f"ban <reply/username/userid> <reason>", "Banned member of the group."],
         [
-            f"{cmd}unban <reply/username/userid> <reason>",
+            f"unban <reply/username/userid> <reason>",
             "Unlocks banned members from the group.",
         ],
         [f"kick <reply/username/userid>", "Remove the user from the group."],
         [
-            f"{cmd}promote or {cmd}fullpromote",
+            f"promote or {cmd}fullpromote",
             "Promote members as admin or cofounder.",
         ],
         [f"demote", "Downgrade admin as a member."],
