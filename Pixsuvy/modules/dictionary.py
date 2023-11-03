@@ -1,10 +1,15 @@
 import asyncio
 
-from pyrogram import filters, Client
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER as cmd
+<<<<<<< HEAD
 from Pixsuvy.helpers.aiohttp_helper import AioHttp
+=======
+from Pixsuvy.helpers import AioHttp
+
+>>>>>>> a53f3685fff10bcb3241e54dcc60ca7d34e81d7e
 from .help import add_command_help
 
 
@@ -29,15 +34,15 @@ async def define(bot: Client, message: Message):
             if "definition" in i:
                 if "example" in i:
                     w_word += (
-                            "\n**Definition**\n<pre>"
-                            + i["definition"]
-                            + "</pre>\n<b>Example</b>\n<pre>"
-                            + i["example"]
-                            + "</pre>"
+                        "\n**Definition**\n<pre>"
+                        + i["definition"]
+                        + "</pre>\n<b>Example</b>\n<pre>"
+                        + i["example"]
+                        + "</pre>"
                     )
                 else:
                     w_word += (
-                            "\n**Definition**\n" + "<pre>" + i["definition"] + "</pre>"
+                        "\n**Definition**\n" + "<pre>" + i["definition"] + "</pre>"
                     )
         w_word += "\n\n"
         return w_word
@@ -88,13 +93,13 @@ async def define(bot: Client, message: Message):
                 # print(crosref)
         if "title" in list(word1):
             out += (
-                    "**__Error Note__**\n\n▪️`"
-                    + word1["title"]
-                    + "\n\n▪️"
-                    + word1["message"]
-                    + "\n\n▪️<i>"
-                    + word1["resolution"]
-                    + "</i>`"
+                "**__Error Note__**\n\n▪️`"
+                + word1["title"]
+                + "\n\n▪️"
+                + word1["message"]
+                + "\n\n▪️<i>"
+                + word1["resolution"]
+                + "</i>`"
             )
         return out
 
