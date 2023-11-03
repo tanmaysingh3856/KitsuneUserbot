@@ -103,7 +103,7 @@ async def define(bot: Client, message: Message):
     else:
         word = input_string
         r_dec = await AioHttp().get_json(
-            f"https://api.dictionaryapi.dev/api/v1/entries/en/{word}"
+            f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
         )
 
         v_word = input_string
