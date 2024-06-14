@@ -1,1 +1,1 @@
-worker: python3 -m Pixsuvy
+worker: python3 -m Kitsune
