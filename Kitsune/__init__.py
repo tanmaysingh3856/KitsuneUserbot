@@ -88,87 +88,69 @@ TEMP_SETTINGS: Dict[Any, Any] = {}
 TEMP_SETTINGS["PM_COUNT"] = {}
 TEMP_SETTINGS["PM_LAST_MSG"] = {}
 
-# Define bot1 and other variables at the module level
-aiosession = None
-bot1 = None
-bot2 = None
-bot3 = None
-bot4 = None
-bot5 = None
-bots = []
-
-
-async def main():
-    global aiosession, bot1, bot2, bot3, bot4, bot5, bots
-    aiosession = ClientSession()
-
-    bot1 = (
-        Client(
-            name="bot1",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            session_string=STRING_SESSION1,
-            plugins=dict(root="Kitsune/modules"),
-        )
-        if STRING_SESSION1
-        else None
+bot1 = (
+    Client(
+        name="bot1",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        session_string=STRING_SESSION1,
+        plugins=dict(root="Kitsune/modules"),
     )
+    if STRING_SESSION1
+    else None
+)
 
-    bot2 = (
-        Client(
-            name="bot2",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            session_string=STRING_SESSION2,
-            plugins=dict(root="Kitsune/modules"),
-        )
-        if STRING_SESSION2
-        else None
+bot2 = (
+    Client(
+        name="bot2",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        session_string=STRING_SESSION2,
+        plugins=dict(root="Kitsune/modules"),
     )
+    if STRING_SESSION2
+    else None
+)
 
-    bot3 = (
-        Client(
-            name="bot3",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            session_string=STRING_SESSION3,
-            plugins=dict(root="Kitsune/modules"),
-        )
-        if STRING_SESSION3
-        else None
+bot3 = (
+    Client(
+        name="bot3",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        session_string=STRING_SESSION3,
+        plugins=dict(root="Kitsune/modules"),
     )
+    if STRING_SESSION3
+    else None
+)
 
-    bot4 = (
-        Client(
-            name="bot4",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            session_string=STRING_SESSION4,
-            plugins=dict(root="Kitsune/modules"),
-        )
-        if STRING_SESSION4
-        else None
+bot4 = (
+    Client(
+        name="bot4",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        session_string=STRING_SESSION4,
+        plugins=dict(root="Kitsune/modules"),
     )
+    if STRING_SESSION4
+    else None
+)
 
-    bot5 = (
-        Client(
-            name="bot5",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            session_string=STRING_SESSION5,
-            plugins=dict(root="Kitsune/modules"),
-        )
-        if STRING_SESSION5
-        else None
+bot5 = (
+    Client(
+        name="bot5",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        session_string=STRING_SESSION5,
+        plugins=dict(root="Kitsune/modules"),
     )
-
-    bots = [bot for bot in [bot1, bot2, bot3, bot4, bot5] if bot]
-
-    for bot in bots:
-        if not hasattr(bot, "group_call"):
-            setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
-
-    # Add any other initialization code here
+    if STRING_SESSION5
+    else None
+)
 
 
-asyncio.run(main())
+bots = [bot for bot in [bot1, bot2, bot3, bot4, bot5] if bot]
+
+for bot in bots:
+    if not hasattr(bot, "group_call"):
+        setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
