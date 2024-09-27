@@ -1,4 +1,5 @@
 import importlib
+import tracemalloc  # Import tracemalloc
 
 from pyrogram import idle
 from uvloop import install
@@ -10,6 +11,8 @@ from Kitsune.modules import ALL_MODULES
 
 PIX_ON = "Kitsune Userbot has been started"
 
+# Enable tracemalloc
+tracemalloc.start()
 
 async def main():
     for all_module in ALL_MODULES:
@@ -34,7 +37,6 @@ async def main():
         await create_botlog(bot1)
     await idle()
     await aiosession.close()
-
 
 if __name__ == "__main__":
     LOGGER("Kitsune").info("Starting Kitsune")
