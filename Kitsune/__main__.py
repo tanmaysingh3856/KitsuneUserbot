@@ -1,8 +1,9 @@
 import importlib
 import tracemalloc
-import asyncio
+
 from pyrogram import idle
 from uvloop import install
+
 from config import BOT_VER, CMD_HANDLER
 from Kitsune import BOTLOG_CHATID, LOGGER, LOOP, aiosession, bot1, bots
 from Kitsune.helpers.misc import create_botlog, heroku
