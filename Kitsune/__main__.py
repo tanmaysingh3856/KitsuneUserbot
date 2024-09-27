@@ -14,6 +14,7 @@ PIX_ON = "Kitsune Userbot has been started"
 # Enable tracemalloc
 tracemalloc.start()
 
+
 async def main():
     for all_module in ALL_MODULES:
         importlib.import_module(f"Kitsune.modules.{all_module}")
@@ -37,6 +38,7 @@ async def main():
         await create_botlog(bot1)
     await idle()
     await aiosession.close()
+
 
 if __name__ == "__main__":
     LOGGER("Kitsune").info("Starting Kitsune")
