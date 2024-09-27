@@ -88,9 +88,17 @@ TEMP_SETTINGS: Dict[Any, Any] = {}
 TEMP_SETTINGS["PM_COUNT"] = {}
 TEMP_SETTINGS["PM_LAST_MSG"] = {}
 
+# Define bot1 and other variables at the module level
+aiosession = None
+bot1 = None
+bot2 = None
+bot3 = None
+bot4 = None
+bot5 = None
+bots = []
 
 async def main():
-    global aiosession
+    global aiosession, bot1, bot2, bot3, bot4, bot5, bots
     aiosession = ClientSession()
 
     bot1 = (
