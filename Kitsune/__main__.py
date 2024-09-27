@@ -11,37 +11,29 @@ from Kitsune.modules import ALL_MODULES
 
 PIX_ON = "Kitsune Userbot has been started"
 
-# Enable tracemalloc
-tracemalloc.start()
-
-
 async def main():
-    try:
-        for all_module in ALL_MODULES:
-            importlib.import_module(f"Kitsune.modules.{all_module}")
-        for bot in bots:
+    for all_module in ALL_MODULES:
+        importlib.import_module(f"Kitsune.modules.{all_module}")
+    for bot in bots:
+        try:
+            await bot.start()
+            bot.me = await bot.get_me()
             try:
-                await bot.start()
-                bot.me = await bot.get_me()
-                try:
-                    await bot.send_message(
-                        BOTLOG_CHATID, PIX_ON.format(BOT_VER, CMD_HANDLER)
-                    )
-                except BaseException:
-                    pass
-                LOGGER("Kitsune").info(
-                    f"Logged in as {bot.me.first_name} | [ {bot.me.id} ]"
+                await bot.send_message(
+                    BOTLOG_CHATID, PIX_ON.format(BOT_VER, CMD_HANDLER)
                 )
-            except Exception as a:
-                LOGGER("main").warning(a)
-        LOGGER("Kitsune").info(f"Kitsune v{BOT_VER}")
-        if bot1 and not str(BOTLOG_CHATID).startswith("-100"):
-            await create_botlog(bot1)
-        await idle()
-    except Exception as e:
-        LOGGER("main").warning(f"Exception in main: {e}")
-    finally:
-        await aiosession.close()
+            except BaseException:
+                pass
+            LOGGER("Kitsune").info(
+                f"Logged in as {bot.me.first_name} | [ {bot.me.id} ]"
+            )
+        except Exception as a:
+            LOGGER("main").warning(a)
+    LOGGER("Kitsune").info(f"Kitsune v{BOT_VER}")
+    if bot1 and not str(BOTLOG_CHATID).startswith("-100"):
+        await create_botlog(bot1)
+    await idle()
+    await aiosession.close()
 
 
 if __name__ == "__main__":
