@@ -1,5 +1,4 @@
 import importlib
-import tracemalloc
 
 from pyrogram import idle
 from uvloop import install
@@ -10,6 +9,7 @@ from Kitsune.helpers.misc import create_botlog, heroku
 from Kitsune.modules import ALL_MODULES
 
 PIX_ON = "Kitsune Userbot has been started"
+
 
 async def main():
     for all_module in ALL_MODULES:
