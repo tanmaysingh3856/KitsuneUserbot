@@ -97,6 +97,7 @@ bot4 = None
 bot5 = None
 bots = []
 
+
 async def main():
     global aiosession, bot1, bot2, bot3, bot4, bot5, bots
     aiosession = ClientSession()
