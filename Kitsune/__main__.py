@@ -13,6 +13,7 @@ PIX_ON = "Kitsune Userbot has been started"
 # Enable tracemalloc
 tracemalloc.start()
 
+
 async def main():
     try:
         for all_module in ALL_MODULES:
@@ -41,13 +42,9 @@ async def main():
     finally:
         await aiosession.close()
 
+
 if __name__ == "__main__":
     LOGGER("Kitsune").info("Starting Kitsune")
     install()
     heroku()
-    try:
-        LOOP.run_until_complete(main())
-    except (KeyboardInterrupt, SystemExit):
-        LOGGER("main").info("Kitsune stopped")
-    finally:
-        LOOP.close()
+    LOOP.run_until_complete(main())
